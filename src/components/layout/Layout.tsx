@@ -91,6 +91,17 @@ const Nav = styled.nav`
   }
 `;
 
+const MobileNavIndicator = styled.div`
+  display: none;
+  color: ${theme.colors.textLight};
+  font-size: 0.8rem;
+  opacity: 0.7;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: block;
+  }
+`;
+
 const Logo = styled(motion.div)`
   color: ${theme.colors.light};
   font-family: ${theme.fonts.heading};
@@ -108,6 +119,7 @@ const NavLinks = styled.div`
     font-weight: 500;
     padding: ${theme.spacing.xs} ${theme.spacing.sm};
     border-radius: 4px;
+    white-space: nowrap;
 
     &:hover {
       color: ${theme.colors.light};
@@ -115,8 +127,17 @@ const NavLinks = styled.div`
     }
   }
 
+  @media (max-width: ${theme.breakpoints.md}) {
+    gap: ${theme.spacing.sm};
+    
+    a {
+      font-size: 0.85rem;
+      padding: ${theme.spacing.xs} 6px;
+    }
+  }
+
   @media (max-width: ${theme.breakpoints.sm}) {
-    gap: ${theme.spacing.md};
+    display: none;
   }
 `;
 
@@ -192,6 +213,9 @@ export const Layout = ({ children }: LayoutProps) => {
               <a href="#projects" role="listitem" aria-label="Projects section">Proyectos</a>
               <a href="#contact" role="listitem" aria-label="Contact section">Contacto</a>
             </NavLinks>
+            <MobileNavIndicator>
+              Navegación →
+            </MobileNavIndicator>
           </div>
         </Nav>
       </Header>
